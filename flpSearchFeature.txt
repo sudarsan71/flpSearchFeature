@@ -9,10 +9,11 @@ Then display no data available error message
 
 #customer scenario's
 
-Scenario: customerenters an available product
+Scenario: customer enters a product
 Given customer is in customer inventory
-When customer enters a available product in search bar
-Then show that particular product details
+When customer enters a product in search bar
+And if it is available
+Then display that particular product details
 
 Scenario: customer selects show products by type
 Given customer is in customer inventory
@@ -26,21 +27,24 @@ When customer selects list products by category
 And selects a category
 Then list all products comes under that category
 
-Scenario: customer enters unavailable product
+Scenario: customer enters a product
 Given customer is in customer inventory
-When customer enters unavailable product in search bar
+When customer enters a product in search bar
+And if it is unavailable
 Then display no product exists
 
 #merchant scenario's
 
 Scenario: merchant searches for an available product
 Given merchant is in merchant inventory
-When merchant enters the product sold by him
-Then show that particular product details
+When merchant enters the product
+And it is sold by him
+Then display that particular product details
 
 Scenario: merchant searches for an unavailable product
 Given merchant is in merchant inventory
-When merchant enters the product not sold by him
+When merchant enters the product
+And it is not sold by him
 Then display no product exists in your inventory
 
 #admin scenario's
