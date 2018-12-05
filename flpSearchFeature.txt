@@ -1,0 +1,56 @@
+#Author : sudarsan
+
+Feature: testing the search bar
+
+Scenario: admin enters unavailable customer or merchant
+Given admin is in admin page
+When admin enters unavailable customer or merchant
+Then display no data available error message
+
+#customer scenario's
+
+Scenario: customerenters an available product
+Given customer is in customer inventory
+When customer enters a available product in search bar
+Then show that particular product details
+
+Scenario: customer selects show products by type
+Given customer is in customer inventory
+When customer selects show products by type
+And selects a type
+Then list all products related to that type
+
+Scenario: customer selects show products by category
+Given customer is in customer inventory
+When customer selects list products by category
+And selects a category
+Then list all products comes under that category
+
+Scenario: customer enters unavailable product
+Given customer is in customer inventory
+When customer enters unavailable product in search bar
+Then display no product exists
+
+#merchant scenario's
+
+Scenario: merchant searches for an available product
+Given merchant is in merchant inventory
+When merchant enters the product sold by him
+Then show that particular product details
+
+Scenario: merchant searches for an unavailable product
+Given merchant is in merchant inventory
+When merchant enters the product not sold by him
+Then display no product exists in your inventory
+
+#admin scenario's
+
+Scenario: admin searches for an available merchant or customer
+Given admin is in admin inventory
+When admin searches for the merchant or customer
+Then show details of the merchant or customer
+
+Scenario: admin searches for an unavailable merchant or customer
+Given admin is in admin inventory
+When admin searches for the merchant or customer
+Then particular merchant or customer doesn't exists
